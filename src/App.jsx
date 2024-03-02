@@ -1,39 +1,27 @@
-import {
-  createBrowserRouter,
-  Routes,
-  Route,
-  Link,
-  createRoutesFromElements,
-  RouterProvider
-} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom"
 
-import './App.css'
-
-//page
-import Page1 from './pages/page1'
-import Page2 from './pages/page2'
-
-
-//layout
-import RootLayout from './lyaouts/RootLayout'
-
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Page1 />} />
-      <Route path='page2' element={<Page2 />} />
-    </Route>
-  )
-)
-
+// pages
+import Home from './pages/Home'
+import About from './pages/About'
 
 function App() {
   return (
-    <RouterProvider router={router} />
-  )
+    <BrowserRouter>
+      <header>
+        <nav>
+          <h1>Jobarouter</h1>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="about">About</NavLink>
+        </nav>
+      </header>
+      <main>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
+  );
 }
-
-//path = '/' === index
 
 export default App
