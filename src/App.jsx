@@ -8,7 +8,7 @@ function App() {
       <header>
         <nav>
           <h1>router</h1>
-          <Link to="/">第一頁，</Link>
+          <Link to="/">第一頁</Link>
           <Link to="Page2">，第二頁</Link>
         </nav>
       </header>
