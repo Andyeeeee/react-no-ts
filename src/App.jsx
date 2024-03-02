@@ -1,24 +1,36 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Routes,
+  Route,
+  Link,
+  createRoutesFromElements,
+  RouterProvider
+} from 'react-router-dom'
+
 import './App.css'
+
+//page
 import Page1 from './pages/page1'
 import Page2 from './pages/page2'
+
+
+//layout
+import RootLayout from './lyaouts/RootLayout'
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Page1 />} />
+      <Route path='page2' element={<Page2 />} />
+    </Route>
+  )
+)
+
+
 function App() {
   return (
-    <BrowserRouter>
-      <header>
-        <nav>
-          <h1>router</h1>
-          <Link to="/">第一頁</Link>
-          <Link to="Page2">，第二頁</Link>
-        </nav>
-      </header>
-      <main>
-        <Routes>
-          <Route index element={<Page1 />} />
-          <Route path='page2' element={<Page2 />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   )
 }
 
